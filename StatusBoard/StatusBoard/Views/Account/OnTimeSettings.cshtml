@@ -1,0 +1,22 @@
+﻿@model StatusBoard.Models.Account.OnTimeSettingsViewModel
+
+
+@if (!String.IsNullOrWhiteSpace(Model.OnTimeAuthToken))
+{
+    <text>
+    Already authorized for <b>@Model.OnTimeBaseUrl</b>. 
+    </text>
+}
+<br />
+<h3>Authorize a new OnTime account</h3>
+@using (Html.BeginForm("OnTimeSettingsRequest", "Account"))
+{
+    <text>
+        <b>Site Url</b>
+        <input type="text" name="OnTimeBaseUrl" value="" />
+        <br/>
+        Example: <i>https://myaccount.ontimenow.com</i>
+        <br />
+        <button>Authorize</button>
+    </text>
+}

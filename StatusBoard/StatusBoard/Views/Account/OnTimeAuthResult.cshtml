@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>OnTime Authorization Result</h2>
+
+@if (!String.IsNullOrWhiteSpace(ViewBag.Error))
+{
+    <text>
+    There was an error with the authorization.
+        <br />
+    <b>Error Description:</b> @ViewBag.Error - @ViewBag.ErrorDescription
+    <br />
+
+    @Html.Action("OnTimeSettings", "Account")
+
+    </text>
+}
+else
+{
+    <text>
+    You have successfully authorized OnTime access for this application. 
+        <br />
+    <br />
+    <b>
+        <a href="@Url.Action("Index", "Home")">Return to homepage</a>
+    </b>
+
+    </text>
+    
+}
+
