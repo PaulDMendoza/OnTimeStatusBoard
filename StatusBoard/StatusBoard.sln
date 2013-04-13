@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatusBoard", "StatusBoard\StatusBoard.csproj", "{DF29E4A9-779D-4906-9322-F89907ADE130}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatusBoard.Tests", "StatusBoard.Tests\StatusBoard.Tests.csproj", "{B14C3CB2-3DB2-4DE7-B990-F08FCEA5AD75}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C6C6D5B1-236E-47C0-A63A-C0CB4D08AAA4}"
+	ProjectSection(SolutionItems) = preProject
+		..\ReadMe.md = ..\ReadMe.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DF29E4A9-779D-4906-9322-F89907ADE130}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF29E4A9-779D-4906-9322-F89907ADE130}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF29E4A9-779D-4906-9322-F89907ADE130}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF29E4A9-779D-4906-9322-F89907ADE130}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B14C3CB2-3DB2-4DE7-B990-F08FCEA5AD75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B14C3CB2-3DB2-4DE7-B990-F08FCEA5AD75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B14C3CB2-3DB2-4DE7-B990-F08FCEA5AD75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B14C3CB2-3DB2-4DE7-B990-F08FCEA5AD75}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
