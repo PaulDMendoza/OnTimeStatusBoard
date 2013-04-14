@@ -5,17 +5,47 @@
 }
 
 <!DOCTYPE html>
-<link href="~/Content/VisualizationThemes/Black/style.css" rel="stylesheet" />
-<html>
-    <head>
-        <title>OnTime Status Board Visualization</title>
-    </head>
-    <body>
-        <div id="statusBoard">
-            Test
+
+<html lang="en">
+<head>
+    <title>OnTime Status Board Visualization</title>
+    @Styles.Render("~/Content/TwitterBootstrap")
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/VisualizationThemes/Black/style.css" rel="stylesheet" />
+</head>
+<body>
+    <<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#">Project name</a>
+          <div class="nav-collapse collapse" style="height: 0px;">
+            <ul class="nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
         </div>
-    </body>
-    
-    @Scripts.Render("~/bundles/jquery", "~/bundles/Visual")
+      </div>
+    </div>
+    <div class="container">
+        <h1>Hello world</h1>
+        <div class="row-fluid">
+            <div class="span4 img-rounded" style="background-color: gray;">Here is some text...</div>
+            <div class="span4 img-rounded" style="background-color: gray;">Even more text...</div>
+            <div class="span4 img-rounded" style="background-color: gray;">Even more text...</div>
+        </div>
+
+        <div id="openDefectCounts"></div>
+        <div id="newsTicker"></div>
+    </div>
+</body>
+
+@Scripts.Render("~/bundles/jquery", "~/bundles/TwitterBootstrap", "~/bundles/Visual")
 
 </html>

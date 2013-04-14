@@ -9,7 +9,7 @@ namespace StatusBoard
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-1.9.1.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                         "~/Scripts/jquery-ui-{version}.js"));
@@ -24,6 +24,9 @@ namespace StatusBoard
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/TwitterBootstrap").IncludeDirectory("~/Content/TwitterBootstrap/css", "*.css"));
+            bundles.Add(new ScriptBundle("~/bundles/TwitterBootstrap").Include("~/Content/TwitterBootstrap/js/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",

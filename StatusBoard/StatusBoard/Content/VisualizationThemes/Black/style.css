@@ -1,3 +1,13 @@
 ﻿body {
-  background-color: gray;
+  background-color: #1A1A1A;
+  color: #B3B3B3;
+  font-family: Helvetica, Arial, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif;
+}
+#newsTicker {
+  width: 100%;
+  background-color: #333333;
+  height: 62px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
 }
