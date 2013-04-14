@@ -3,7 +3,7 @@
 module Visual {
 
     export interface DataPollerResponse {
-        
+         RecentDefects : OnTime.Defect[];   
     }
     
     // Class

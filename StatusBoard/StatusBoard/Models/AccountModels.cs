@@ -38,6 +38,15 @@ namespace StatusBoard.Models
         /// UTC time that the authorization token was last set.
         /// </summary>
         public DateTime? AuthorizationDate { get; set; }
+
+        /// <summary>
+        /// Tracks how many API requests have been made so far on the LastRequestDate day.
+        /// </summary>
+        public int? CountRequestsToday { get; set; }
+        /// <summary>
+        /// Tracks which date the last API request was made. Use in conjunction with field CountRequestsToday
+        /// </summary>
+        public DateTime? LastRequestDate { get; set; }
     }
 
     

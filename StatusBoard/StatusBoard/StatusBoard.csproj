@@ -201,6 +201,8 @@
     <Compile Include="Models\OnTimeApiModels\Users.cs" />
     <Compile Include="Models\OnTimeApiModels\Vote.cs" />
     <Compile Include="Models\OnTimeApiModels\WorkflowStep.cs" />
+    <Compile Include="Models\OnTimeData\OnTimeAPIResponse.cs" />
+    <Compile Include="Models\OnTimeData\OnTimeDataRepository.cs" />
     <Compile Include="Models\Visual\DataJsonModel.cs" />
     <Compile Include="Models\WebConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -284,6 +286,14 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <TypeScriptCompile Include="Scripts\Visual\OnTimeDefinitions.ts" />
+    <Content Include="Scripts\Visual\OnTimeDefinitions.js">
+      <DependentUpon>OnTimeDefinitions.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Visual\OnTimeDefinitions.min.js">
+      <DependentUpon>OnTimeDefinitions.ts</DependentUpon>
+    </Content>
+    <Content Include="Views\Visual\TypeScriptInterfaces.cshtml" />
     <TypeScriptCompile Include="Scripts\Visual\VisualController.ts" />
     <TypeScriptCompile Include="Scripts\Visual\DataPoller.ts" />
     <Content Include="Scripts\typings\jquery\jquery.d.ts" />
@@ -383,7 +393,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>21054</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:63069/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

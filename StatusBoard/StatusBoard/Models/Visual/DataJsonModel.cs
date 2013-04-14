@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using OnTimeApi;
+using StatusBoard.Models.OnTimeApiModels;
 
 namespace StatusBoard.Models.Visual
 {
@@ -12,13 +14,12 @@ namespace StatusBoard.Models.Visual
             var userProfile = context.UserProfiles.First(u => u.UserId == userID);
 
             ServerTimeStamp = DateTime.UtcNow.ToString();
-
-            var api = new OnTime(new Settings(userProfile.OnTimeBaseUrl, WebConfig.OnTimeClientID, WebConfig.OnTimeClientSecret));
             
-
+            var dataRepository = new OnTimeDataRepository(userID);
+            RecentDefects = dataRepository.MostRecentDefects();
         }
         
         public string ServerTimeStamp { get; set; }
-
+        public IEnumerable<Defect> RecentDefects { get; set; }
     }
 }

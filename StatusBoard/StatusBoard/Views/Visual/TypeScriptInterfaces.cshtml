@@ -1,0 +1,95 @@
+﻿@using StatusBoard.Models.OnTimeApiModels;
+@using System.Reflection;
+
+@{
+    Layout = null;
+}
+
+module OnTime {
+
+
+@{
+    IEnumerable<Type> types = Assembly.GetAssembly(typeof (Customer)).GetTypes().Where(s => s.Namespace == typeof (Customer).Namespace);
+}
+@foreach (var t in types)
+{
+    <text>export interface </text> @t.Name @("{")
+            <text>
+            </text> // force a line break
+            foreach (var p in t.GetProperties())
+            {
+                var typeString = getTypesScriptType(p.PropertyType.ToString(), types);
+                if (typeString == null)
+                {
+            <text>//@p.Name: of type @p.PropertyType does not have a corresponding typescript type mapping yet</text>
+                }
+                else
+                {
+                    if (p.PropertyType.ToString().Contains("Nullable"))
+                    {
+            @(string.Format("{0}?: {1}; ", p.Name, typeString, p.PropertyType))
+                    }
+                    else
+                    {
+            @(string.Format("{0}: {1}; ", p.Name, typeString, p.PropertyType))
+                    }
+            <text>
+            </text> // force a line break
+        }
+    }
+<text>
+         }
+</text>
+    
+    <text>
+    </text> // force a line break
+}
+
+}
+
+
+@functions{
+
+    string getTypesScriptType(string propertyType, IEnumerable<Type> types)
+    {
+        switch (propertyType)
+        {
+            case "System.String":
+                return "string";
+                break;
+            case "System.Int32":
+                return "number";
+                break;
+            case "System.Decimal":
+                return "number";
+                break;
+            case "System.Boolean":
+                return "bool";
+                break;
+            case "System.Nullable`1[System.DateTime]":
+                return "string";
+                break;
+            case "System.Nullable`1[System.Boolean]":
+                return "bool";
+                break;
+            case "System.Nullable`1[System.Int32]":
+                return "number";
+                break;
+            default:
+                if (propertyType.EndsWith("[]"))
+                {
+                    var parts = propertyType.Split('.');
+                    return parts[parts.Length - 1];
+                }
+                
+                var matchingType = types.FirstOrDefault(t => t.FullName == propertyType);
+                if (matchingType != null)
+                {
+                    return matchingType.Name;
+                }
+
+                break;
+        }
+        return null;
+    }
+}
