@@ -279,12 +279,11 @@
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -293,6 +292,20 @@
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <TypeScriptCompile Include="Scripts\Visual\OnTimeDefinitions.ts" />
+    <TypeScriptCompile Include="Scripts\ThirdParty\jquery.vticker.ts" />
+    <Content Include="Scripts\ThirdParty\jquery.vticker.js">
+      <DependentUpon>jquery.vticker.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\ThirdParty\jquery.vticker.min.js">
+      <DependentUpon>jquery.vticker.ts</DependentUpon>
+    </Content>
+    <TypeScriptCompile Include="Scripts\Visual\NewsTicker.ts" />
+    <Content Include="Scripts\Visual\NewsTicker.js">
+      <DependentUpon>NewsTicker.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Visual\NewsTicker.min.js">
+      <DependentUpon>NewsTicker.ts</DependentUpon>
+    </Content>
     <Content Include="Scripts\Visual\OnTimeDefinitions.js">
       <DependentUpon>OnTimeDefinitions.ts</DependentUpon>
     </Content>

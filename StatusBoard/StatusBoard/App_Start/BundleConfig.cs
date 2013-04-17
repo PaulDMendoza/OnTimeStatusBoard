@@ -9,7 +9,8 @@ namespace StatusBoard
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-1.9.1.js"));
+                        "~/Scripts/jquery-1.9.1.js",
+                        "~/Scripts/ThirdParty/jquery.vticker.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                         "~/Scripts/jquery-ui-{version}.js"));

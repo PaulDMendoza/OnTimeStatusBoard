@@ -19,9 +19,9 @@ module Visual {
 
         StartPolling() {
             this.Poll();
-            //setInterval(() => {
-            //    this.Poll();
-            //}, 5000);
+            setInterval(() => {
+                this.Poll();
+            }, 1000 * 60 * 10);
         }
 
         Poll() {
