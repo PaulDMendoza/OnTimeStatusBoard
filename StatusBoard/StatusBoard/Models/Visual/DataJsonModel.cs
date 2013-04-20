@@ -16,10 +16,12 @@ namespace StatusBoard.Models.Visual
             ServerTimeStamp = DateTime.UtcNow.ToString();
             
             var dataRepository = new OnTimeDataRepository(userID);
-            RecentDefects = dataRepository.MostRecentDefects();
+            RecentDefects = dataRepository.Defects();
         }
         
         public string ServerTimeStamp { get; set; }
-        public IEnumerable<Defect> RecentDefects { get; set; }
+        public IEnumerable<MiniDefect> RecentDefects { get; set; }
+        
+        
     }
 }

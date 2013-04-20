@@ -11,8 +11,8 @@ namespace StatusBoard.Models
 {
     public class OnTimeDataRepository
     {
-        private static ConcurrentDictionary<int, UserOnTimeData> _usersData = new ConcurrentDictionary<int, UserOnTimeData>(); 
-        
+        private static ConcurrentDictionary<int, UserOnTimeData> _usersData = new ConcurrentDictionary<int, UserOnTimeData>();
+
         private OnTimeApi.OnTime _api;
         private OnTimeApi.OnTime API
         {
@@ -46,13 +46,31 @@ namespace StatusBoard.Models
             }
         }
         
-        public IEnumerable<Defect> MostRecentDefects()
+        public IEnumerable<MiniDefect> Defects()
         {
-            return CallAPI<Defects>("v1/defects", new List<KeyValuePair<string, string>>() { new KeyValuePair<string, string>("sort_fields", "created_date_time desc") })
-                .Object
-                .data
-                .Select(s=>MapProperties(s))
-                .ToList();
+            var defects = new List<MiniDefect>();
+
+            int itemsRemaining = int.MaxValue;
+            int page_size = 1000;
+            
+            for (int page = 0; itemsRemaining > page_size && page < 4; page++)
+	        {	
+	            var response = CallAPI<Defects>("v1/defects", new Dictionary<string, object>()
+                {
+                    {"sort_fields", "created_date_time desc" },
+                    {"page_size", page_size },
+                    {"page", page},
+                    {"columns", "id,number,name,workflow_step,priority,assigned_to,created_date_time,last_updated_date_time,status" }
+                });
+                
+                defects.AddRange(response.Object.data.Select(d=>MapProperties(d)));
+
+	            page_size = response.Object.metadata.page_size;
+
+		        itemsRemaining = response.Object.metadata.total_count - (page * page_size);
+	        }
+            
+            return defects;
         }
 
         public T MapProperties<T>(T item)
@@ -61,15 +79,15 @@ namespace StatusBoard.Models
             {
                 if (t.CanWrite)
                 {
-                    
+
                 }
                 if (t.GetValue(item) == null)
                 {
                     continue;
                 }
-                if (t.PropertyType == typeof (Priority))
+                if (t.PropertyType == typeof(Priority))
                 {
-                    var prioritySmall = (Priority) t.GetValue(item);
+                    var prioritySmall = (Priority)t.GetValue(item);
                     var matchingPriority = _userOnTimeData.Priorities.FirstOrDefault(p => p.id == prioritySmall.id);
                     if (matchingPriority == null)
                     {
@@ -81,9 +99,9 @@ namespace StatusBoard.Models
             }
             return item;
         }
-         
-        
-        private OnTimeAPIResponse<T> CallAPI<T>(string resource, IEnumerable<KeyValuePair<string, string>> parameters = null)
+
+
+        private OnTimeAPIResponse<T> CallAPI<T>(string resource, IEnumerable<KeyValuePair<string, object>> parameters = null)
         {
             var userContext = new UsersContext();
             var userProfile = userContext.UserProfiles.First(u => u.UserId == _userID);
@@ -97,7 +115,7 @@ namespace StatusBoard.Models
             var api = API;
             try
             {
-                var o = api.Get<T>(resource, null);
+                var o = api.Get<T>(resource, parameters);
                 var result = new OnTimeAPIResponse<T>(o, userProfile.CountRequestsToday ?? 0);
                 return result;
             }
@@ -116,6 +134,6 @@ namespace StatusBoard.Models
             Priorities = new List<Priority>();
         }
         public int UserID { get; set; }
-        public IEnumerable<Priority> Priorities { get; set; } 
+        public IEnumerable<Priority> Priorities { get; set; }
     }
 }

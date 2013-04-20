@@ -187,6 +187,7 @@
     <Compile Include="Models\OnTimeApiModels\Features.cs" />
     <Compile Include="Models\OnTimeApiModels\FullOnTimeUser.cs" />
     <Compile Include="Models\OnTimeApiModels\MetaData.cs" />
+    <Compile Include="Models\OnTimeApiModels\MiniDefect.cs" />
     <Compile Include="Models\OnTimeApiModels\OnTimeUser.cs" />
     <Compile Include="Models\OnTimeApiModels\ParentProject.cs" />
     <Compile Include="Models\OnTimeApiModels\Priorities.cs" />

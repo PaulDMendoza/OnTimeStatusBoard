@@ -2,7 +2,7 @@
 {
     public class Defects
     {
-        public Defect[] data { get; set; }
+        public MiniDefect[] data { get; set; }
         public MetaData metadata { get; set; }
     }
 }
