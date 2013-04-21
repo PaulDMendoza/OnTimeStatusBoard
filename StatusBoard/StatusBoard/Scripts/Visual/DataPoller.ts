@@ -18,10 +18,10 @@ module Visual {
         }
 
         StartPolling() {
-            this.Poll();
-            setInterval(() => {
-                this.Poll();
-            }, 1000 * 60 * 10);
+            //this.Poll();
+            //setInterval(() => {
+            //    this.Poll();
+            //}, 1000 * 60 * 10);
         }
 
         Poll() {
@@ -39,10 +39,7 @@ module Visual {
                 error: (err, x, y) => {
                     console.log('Error: ' + err);
                     }
-            });
-
-
-            
+            });            
         }
 
         ListenForData(callback: (DataPollerResponse) => void ) {

@@ -6,9 +6,9 @@ using StatusBoard.Models.OnTimeApiModels;
 
 namespace StatusBoard.Models.Visual
 {
-    public class DataJsonModel
+    public class IndexViewModel
     {
-        public DataJsonModel(int userID)
+        public IndexViewModel(int userID)
         {
             var context = new UsersContext();
             var userProfile = context.UserProfiles.First(u => u.UserId == userID);
@@ -21,7 +21,5 @@ namespace StatusBoard.Models.Visual
         
         public string ServerTimeStamp { get; set; }
         public IEnumerable<Defect> RecentDefects { get; set; }
-        
-        
     }
 }

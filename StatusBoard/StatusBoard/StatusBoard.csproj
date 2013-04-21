@@ -204,6 +204,7 @@
     <Compile Include="Models\OnTimeApiModels\WorkflowStep.cs" />
     <Compile Include="Models\OnTimeData\OnTimeAPIResponse.cs" />
     <Compile Include="Models\OnTimeData\OnTimeDataRepository.cs" />
+    <Compile Include="Models\Visual\IndexViewModel.cs" />
     <Compile Include="Models\Visual\DataJsonModel.cs" />
     <Compile Include="Models\WebConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -291,6 +292,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
+    <None Include="Scripts\linq-vsdoc.js" />
+    <Content Include="Scripts\linq.js" />
+    <Content Include="Scripts\linq.min.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <TypeScriptCompile Include="Scripts\Visual\OnTimeDefinitions.ts" />
     <TypeScriptCompile Include="Scripts\ThirdParty\jquery.vticker.ts" />
@@ -301,6 +305,14 @@
       <DependentUpon>jquery.vticker.ts</DependentUpon>
     </Content>
     <TypeScriptCompile Include="Scripts\Visual\NewsTicker.ts" />
+    <Content Include="Scripts\typings\linq.d.ts" />
+    <TypeScriptCompile Include="Scripts\Visual\DefectsWorkflowSteps.ts" />
+    <Content Include="Scripts\Visual\DefectsWorkflowSteps.js">
+      <DependentUpon>DefectsWorkflowSteps.ts</DependentUpon>
+    </Content>
+    <Content Include="Scripts\Visual\DefectsWorkflowSteps.min.js">
+      <DependentUpon>DefectsWorkflowSteps.ts</DependentUpon>
+    </Content>
     <Content Include="Scripts\Visual\NewsTicker.js">
       <DependentUpon>NewsTicker.ts</DependentUpon>
     </Content>

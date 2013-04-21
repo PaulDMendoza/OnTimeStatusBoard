@@ -23,3 +23,18 @@
 #newsTicker #scrollingNewsTicker li {
   list-style: none;
 }
+.blockedRegion {
+  display: block;
+  background-color: #000000;
+  padding: 5px 5px 5px 10px;
+  margin-bottom: 15px;
+}
+.priorityColorBox {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+}
+.footer {
+  text-align: center;
+  font-size: 10px;
+}

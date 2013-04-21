@@ -1,6 +1,5 @@
 
 
-
 module OnTime {
 
 
@@ -59,7 +58,7 @@ module OnTime {
 
 
     export interface Defects {
-        data: Defect[];
+        data: MiniDefect[];
         metadata: MetaData;
 
     }
@@ -139,6 +138,20 @@ module OnTime {
         total_count: number;
         page?: number;
         page_size: number;
+
+    }
+
+
+    export interface MiniDefect {
+        id: number;
+        number: string;
+        name: string;
+        workflow_step: WorkflowStep;
+        priority: Priority;
+        assigned_to: OnTimeUser;
+        created_date_time?: string;
+        last_updated_date_time?: string;
+        status: Status;
 
     }
 
@@ -257,4 +270,6 @@ module OnTime {
 
 
 }
+
+
 

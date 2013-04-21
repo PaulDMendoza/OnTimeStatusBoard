@@ -15,13 +15,12 @@ module Visual {
             var poller = new Visual.DataPoller();
             
             var newsTicker = new Visual.NewsTicker();
+            var defectsWorkflowSteps = new Visual.DefectsWorkflowSteps();
 
             poller.ListenForData((data: DataPollerResponse) => {
-                for (var i = 0; i < data.RecentDefects.length; i++) {
-                    var defect = data.RecentDefects[i];
-                    $('#statusBoard').append('<br/><span style="color: #' + defect.priority.color + '" >Name: ' + defect.name + ' Created: ' + defect.created_date_time + "</span>");
-                }
-                newsTicker.poll(data);                
+                
+                newsTicker.poll(data);
+                defectsWorkflowSteps.poll(data);
             });
             poller.StartPolling();
 

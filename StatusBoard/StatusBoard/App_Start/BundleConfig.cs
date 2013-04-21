@@ -10,7 +10,8 @@ namespace StatusBoard
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-1.9.1.js",
-                        "~/Scripts/ThirdParty/jquery.vticker.js"));
+                        "~/Scripts/ThirdParty/jquery.vticker.js",
+                        "~/Scripts/linq.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                         "~/Scripts/jquery-ui-{version}.js"));

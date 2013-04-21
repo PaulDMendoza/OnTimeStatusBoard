@@ -6,11 +6,6 @@ var Visual;
             this._listeners = [];
         }
         DataPoller.prototype.StartPolling = function () {
-            var _this = this;
-            this.Poll();
-            setInterval(function () {
-                _this.Poll();
-            }, 1000 * 60 * 10);
         };
         DataPoller.prototype.Poll = function () {
             var _this = this;

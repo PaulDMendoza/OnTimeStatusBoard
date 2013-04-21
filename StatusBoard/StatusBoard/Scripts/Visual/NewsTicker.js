@@ -12,12 +12,6 @@ var Visual;
             });
         }
         NewsTicker.prototype.poll = function (responseData) {
-            $('#scrollingNewsTicker ul').empty();
-            $('#scrollingNewsTicker ul').append('<li></li>');
-            for(var i = 0; i < responseData.RecentDefects.length; i++) {
-                var defect = responseData.RecentDefects[i];
-                $('#scrollingNewsTicker ul').append('<li>' + defect.name + '</li>');
-            }
         };
         return NewsTicker;
     })();

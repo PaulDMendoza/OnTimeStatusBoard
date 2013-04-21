@@ -14,9 +14,12 @@ namespace StatusBoard.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            return View();
+            var userID = WebSecurity.GetUserId(User.Identity.Name);
+            var model = new IndexViewModel(userID);
+
+            return View(model);
         }
-        
+
         public JsonResult Data()
         {
             var userID = WebSecurity.GetUserId(User.Identity.Name);
