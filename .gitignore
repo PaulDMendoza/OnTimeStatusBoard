@@ -42,6 +42,8 @@ local.properties
 *.sln.docstates
 *.mdf
 *.ldf
+Web.Release.config
+*.pubxml
 
 # Build results
 [Dd]ebug/
