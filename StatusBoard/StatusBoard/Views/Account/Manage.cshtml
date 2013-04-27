@@ -7,9 +7,11 @@
     <h1>@ViewBag.Title.</h1>
 </hgroup>
 
-<h3>OnTime Settings</h3>
+<h2>OnTime Settings</h2>
 @Html.Action("OnTimeSettings", "Account", new { })
 
+
+<h2>Login Settings</h2>
 
 <p class="message-success">@ViewBag.StatusMessage</p>
 
@@ -30,6 +32,11 @@ else
     <h3>Add an external login</h3>
     @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
 </section>
+
+
+
+@Html.Action("ManageDisplaySettings", "Account", new { })
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

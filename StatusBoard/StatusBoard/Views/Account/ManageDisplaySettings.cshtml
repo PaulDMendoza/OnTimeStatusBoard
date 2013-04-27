@@ -1,0 +1,25 @@
+﻿@model StatusBoard.Models.Account.ManageDisplaySettingsViewModel
+
+@using (Html.BeginForm("ManageDisplaySettingsSubmit"))
+{
+    
+    <h2>Display Settings</h2>
+    <i>Configure the visual settings of your status board from here.</i>
+    <br/>
+    <br/>
+    <section>
+        @Html.RadioButton("displayOption", "featuresOnly", Model.User.ShowFeatures && !Model.User.ShowDefects)
+        <b>Show Only Features</b>
+        @Html.RadioButton("displayOption", "defectsOnly", !Model.User.ShowFeatures && Model.User.ShowDefects)
+        <b>Show Only Defects</b>
+        @Html.RadioButton("displayOption", "both", Model.User.ShowFeatures && Model.User.ShowDefects)
+        <b>Show Both</b>
+    </section>
+    <br/>
+    <section>
+        <b>Refresh Rate</b>
+        @Html.DropDownList("refreshRate", Model.RefreshRates)
+    </section>
+    <br/>
+    <button type="submit" >Save Display Settings</button>
+}

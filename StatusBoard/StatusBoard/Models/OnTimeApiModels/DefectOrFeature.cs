@@ -2,7 +2,7 @@
 
 namespace StatusBoard.Models.OnTimeApiModels
 {
-    public class Defect
+    public class DefectOrFeature
     {
         public int id { get; set; }
         public string number { get; set; }

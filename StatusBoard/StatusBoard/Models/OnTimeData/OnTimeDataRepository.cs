@@ -5,6 +5,7 @@ using System.Threading;
 using System.Web;
 using System.Collections.Concurrent;
 using OnTimeApi;
+using StatusBoard.Controllers;
 using StatusBoard.Models.OnTimeApiModels;
 
 namespace StatusBoard.Models
@@ -46,30 +47,30 @@ namespace StatusBoard.Models
             }
         }
         
-        public IEnumerable<Defect> Defects()
+        public IEnumerable<DefectOrFeature> ItemsOfType(VisualController.ItemType type)
         {
-            var defects = new List<Defect>();
+            var defectsOrFeatures = new List<DefectOrFeature>();
 
             int itemsRemaining = int.MaxValue;
             int page_size = 1000;
             
             for (int page = 0; itemsRemaining > page_size && page < 4; page++)
 	        {	
-	            var response = CallAPI<Defects>("v1/defects", new Dictionary<string, object>()
+	            var response = CallAPI<Defects>("v1/" + type.ToString() , new Dictionary<string, object>()
                 {
                     {"sort_fields", "created_date_time desc" },
                     {"page_size", page_size },
                     {"page", page}
                 });
                 
-                defects.AddRange(response.Object.data.Select(d=>MapProperties(d)));
+                defectsOrFeatures.AddRange(response.Object.data.Select(d=>MapProperties(d)));
 
 	            page_size = response.Object.metadata.page_size;
 
 		        itemsRemaining = response.Object.metadata.total_count - (page * page_size);
 	        }
             
-            return defects;
+            return defectsOrFeatures;
         }
 
         /// <summary>

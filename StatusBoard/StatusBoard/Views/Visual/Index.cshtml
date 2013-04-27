@@ -1,4 +1,5 @@
-﻿@using StatusBoard.Models.OnTimeApiModels
+﻿@using StatusBoard.Controllers
+@using StatusBoard.Models.OnTimeApiModels
 @model StatusBoard.Models.Visual.IndexViewModel
 
 @{
@@ -13,6 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @Styles.Render("~/Content/TwitterBootstrap")
     <link href="~/Content/VisualizationThemes/Black/style.css" rel="stylesheet" />
+    <meta http-equiv="refresh" content="@Model.RefreshRate" >
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -26,10 +28,9 @@
                 <a class="brand" href="#">Status Board</a>
                 <div class="nav-collapse collapse" style="height: 0px;">
                     <ul class="nav">
-                        <li class="active"><a href="#defects">Defects</a></li>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#settings">Settings</a></li>
-                        <li><a href="#help">Help</a></li>
+                        <li @(Model.ItemType == VisualController.ItemType.defects ? "class=active" : "")  ><a href="@Url.Action("Index", new { type = "defects" })">Defects</a></li>
+                        <li @(Model.ItemType == VisualController.ItemType.features ? "class=active" : "")><a href="@Url.Action("Index", new { type = "features" })">Features</a></li>
+                        <li><a href="@Url.Action("Manage", "Account")">Settings</a></li>
                         <li><a href="@this.Request.RawUrl">Refresh Page</a></li>
                     </ul>
                 </div>
@@ -38,7 +39,7 @@
         </div>
     </div>
     <div class="container">
-        <h1>Defects</h1>
+        <h1>@Model.PluralItemsName</h1>
         <div class="row-fluid" id="stackedZones">
             <div class="span12 img-rounded" id="defectTypes">
                 
@@ -46,7 +47,7 @@
         </div>
         <div class="row-fluid">
             <div class="span7 blockedRegion" id="defectsWorkflowSteps">
-                <h2>Most Recent Defects</h2>
+                <h2>Most Recent @Model.PluralItemsName</h2>
                 <table class="table">
                     <thead>
                         <tr>
@@ -123,7 +124,7 @@
         </div>
         
         <div class="footer">
-            Last updated at @DateTime.UtcNow.ToShortTimeString() UTC. Updates every five minutes.
+            Last updated at @DateTime.UtcNow.ToShortTimeString() UTC. Updates every @(Model.RefreshRate / 60) minutes.
         </div>
         
     </div>

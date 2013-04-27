@@ -9,6 +9,7 @@ using System.Web.Security;
 using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
 using OnTimeApi;
+using StatusBoard.Models.Account;
 using WebMatrix.WebData;
 using StatusBoard.Filters;
 using StatusBoard.Models;
@@ -469,5 +470,46 @@ namespace StatusBoard.Controllers
             }
         }
         #endregion
+
+        public ActionResult ManageDisplaySettings()
+        {
+            var usersContext = new UsersContext();
+            var userID = WebSecurity.GetUserId(User.Identity.Name);
+            var user = usersContext.UserProfiles.First(u => u.UserId == userID);
+
+            var model = new ManageDisplaySettingsViewModel(user);
+            return PartialView(model);
+        }
+
+        public ActionResult ManageDisplaySettingsSubmit(string displayOption, int refreshRate)
+        {
+            var usersContext = new UsersContext();
+            var userID = WebSecurity.GetUserId(User.Identity.Name);
+            var user = usersContext.UserProfiles.First(u => u.UserId == userID);
+
+            user.RefreshRate = refreshRate;
+            if (displayOption == "featuresOnly")
+            {
+                user.ShowFeatures = true;
+                user.ShowDefects = false;
+            }
+            else if (displayOption == "defectsOnly")
+            {
+                user.ShowFeatures = false;
+                user.ShowDefects = true;
+            }
+            else if (displayOption == "both")
+            {
+                user.ShowFeatures = true;
+                user.ShowDefects = true;
+            }
+            else
+            {
+                throw new NotImplementedException("No handler for option displayOption of " + displayOption);
+            }
+            usersContext.SaveChanges();
+
+            return RedirectToAction("Index", "Visual");
+        }
     }
 }

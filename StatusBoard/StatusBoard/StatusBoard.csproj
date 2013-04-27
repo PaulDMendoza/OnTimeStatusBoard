@@ -177,10 +177,11 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Account\ManageDisplaySettingsViewModel.cs" />
     <Compile Include="Models\Account\OnTimeSettingsViewModel.cs" />
     <Compile Include="Models\OnTimeApiModels\Customer.cs" />
     <Compile Include="Models\OnTimeApiModels\CustomerContact.cs" />
-    <Compile Include="Models\OnTimeApiModels\Defect.cs" />
+    <Compile Include="Models\OnTimeApiModels\DefectOrFeature.cs" />
     <Compile Include="Models\OnTimeApiModels\Defects.cs" />
     <Compile Include="Models\OnTimeApiModels\Duration.cs" />
     <Compile Include="Models\OnTimeApiModels\Feature.cs" />
@@ -210,6 +211,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Small_StatusBoard.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -296,6 +298,7 @@
     <Content Include="Scripts\linq.js" />
     <Content Include="Scripts\linq.min.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Views\Account\ManageDisplaySettings.cshtml" />
     <TypeScriptCompile Include="Scripts\Visual\OnTimeDefinitions.ts" />
     <TypeScriptCompile Include="Scripts\ThirdParty\jquery.vticker.ts" />
     <Content Include="Scripts\ThirdParty\jquery.vticker.js">
@@ -387,7 +390,6 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />

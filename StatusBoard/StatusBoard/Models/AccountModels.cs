@@ -47,6 +47,13 @@ namespace StatusBoard.Models
         /// Tracks which date the last API request was made. Use in conjunction with field CountRequestsToday
         /// </summary>
         public DateTime? LastRequestDate { get; set; }
+
+        public bool ShowDefects { get; set;  }
+        public bool ShowFeatures { get; set;  }
+        /// <summary>
+        /// Number of seconds to wait between page refreshes.
+        /// </summary>
+        public int RefreshRate { get; set;  }
     }
 
     
