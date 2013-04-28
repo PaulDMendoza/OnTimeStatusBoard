@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using OnTimeApi;
 using StatusBoard.Controllers;
 using StatusBoard.Models.OnTimeApiModels;
@@ -61,8 +62,10 @@ namespace StatusBoard.Models.Visual
             ItemType = type.Value;
 
             RefreshRate = userProfile.RefreshRate;
+            if (RefreshRate < 60)
+                RefreshRate = 180;
 
-            ServerTimeStamp = DateTime.UtcNow.ToString();
+            ServerTimeStamp = DateTime.UtcNow.ToShortTimeString();
 
             var dataRepository = new OnTimeDataRepository(userID);
             RecentDefects = dataRepository.ItemsOfType(ItemType);

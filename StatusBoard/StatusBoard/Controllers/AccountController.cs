@@ -66,6 +66,7 @@ namespace StatusBoard.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            ViewBag.Title = "Register";
             return View();
         }
 

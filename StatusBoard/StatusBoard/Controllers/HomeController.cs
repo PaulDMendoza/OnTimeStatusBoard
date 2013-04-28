@@ -10,6 +10,7 @@ namespace StatusBoard.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Title = "Condition Board";
             ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
 
             return View();

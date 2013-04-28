@@ -48,12 +48,29 @@ namespace StatusBoard.Models
         /// </summary>
         public DateTime? LastRequestDate { get; set; }
 
-        public bool ShowDefects { get; set;  }
-        public bool ShowFeatures { get; set;  }
+        private bool _showDefects = true;
+        public bool ShowDefects
+        {
+            get { return _showDefects; }
+            set { _showDefects = value; }
+        }
+
+        private bool _showFeatures = true;
+        public bool ShowFeatures
+        {
+            get { return _showFeatures; }
+            set { _showFeatures = value; }
+        }
+
+        private int _refreshRate = 180;
         /// <summary>
         /// Number of seconds to wait between page refreshes.
         /// </summary>
-        public int RefreshRate { get; set;  }
+        public int RefreshRate
+        {
+            get { return _refreshRate; }
+            set { _refreshRate = value; }
+        }
     }
 
     
