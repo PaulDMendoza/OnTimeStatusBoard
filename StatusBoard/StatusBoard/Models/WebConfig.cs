@@ -15,7 +15,15 @@ namespace StatusBoard.Models
 
         public static string OnTimeClientSecret
         {
-            get { return Environment.GetEnvironmentVariable("OnTimeClientSecret", EnvironmentVariableTarget.Machine); }
+            get
+            {
+                var secret = Environment.GetEnvironmentVariable("OnTimeClientSecret", EnvironmentVariableTarget.Machine);
+                if (String.IsNullOrWhiteSpace(secret))
+                {
+                    secret = ConfigurationManager.AppSettings["OnTimeClientSecret"];
+                }
+                return secret;
+            }
 
         }
 
