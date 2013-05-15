@@ -20,6 +20,15 @@ namespace StatusBoard.Controllers
     [InitializeSimpleMembership]
     public class AccountController : Controller
     {
+        [AllowAnonymous]
+        public ActionResult Impersonate()
+        {
+            FormsAuthentication.SignOut();
+            FormsAuthentication.SetAuthCookie("SeanM", false);
+            //Response.AppendCookie(cookie);
+            return RedirectToAction("Index", "Home");
+        }
+
         //
         // GET: /Account/Login
 
